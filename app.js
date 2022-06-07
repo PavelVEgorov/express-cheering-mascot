@@ -42,6 +42,30 @@ app.get('/', (req, res) => {
   res.end(html);
 });
 
+app.post('/cheers', (req, res) => {
+  const word = req.body.cheer_name;
+  let louder = '';
+
+  switch (word) {
+    case 'RED HOT':
+      louder = 'H-O-T!';
+      break;
+    case 'DO IT AGAIN':
+      louder = 'Go, Fight, Win';
+      break;
+    case '2 BITS':
+      louder = 'Holler!';
+      break;
+    case 'STOMP YOUR FEET':
+      louder = 'STOMP!';
+      break;
+    default:
+      louder = 'Go Team!';
+  }
+  res.redirect(`http://localhost:3000/?signText=${louder}`);
+
+});
+
 app.listen(PORT, () => {
   console.log(`Server started on port ${PORT}`);
 });
